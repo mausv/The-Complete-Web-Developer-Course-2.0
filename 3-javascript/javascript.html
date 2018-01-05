@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript</title>
+
+    <style text="stylesheet">
+      .clicker {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top: 101px;
+        right: -100px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Test Your Reactions!</h1>
+    <p>Click on the boxes and circles as quickly as you can!</p>
+    <p><strong>Your time: <span id="time">0.000</span>s</strong></p>
+
+    <div class="container">
+      <div id="item" class="clicker">
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var currentTime = new Date().getTime();
+
+      function clickedItem() {
+          document.getElementById('time').innerHTML = ((new Date().getTime() - currentTime) / 1000).toString();
+      }
+
+      document.getElementById('item').onclick = function() {
+        clickedItem();
+      }
+
+    </script>
+
+  </body>
+</html>

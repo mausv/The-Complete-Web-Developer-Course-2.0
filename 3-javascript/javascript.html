@@ -10,8 +10,6 @@
         width: 100px;
         height: 100px;
         position: relative;
-        top: 101px;
-        right: -100px;
       }
     </style>
   </head>
@@ -32,6 +30,25 @@
 
       function clickedItem() {
           document.getElementById('time').innerHTML = ((new Date().getTime() - currentTime) / 1000).toString();
+          document.getElementById('item').style.display = "none";
+          var randomWaitAppear = Math.floor(Math.random() * 6) * 1000;
+          var randomTop = Math.random() * 500;
+          var randomRight = -Math.random() * 500;
+          console.log(randomWaitAppear);
+          setTimeout(function() {
+              document.getElementById('item').style.top = randomTop.toString() + "px";
+              document.getElementById('item').style.right = randomRight.toString() + "px";
+              document.getElementById('item').style.display = "block";
+              var random = Math.random() * 1;
+              if(random > 0.5) {
+                  console.log("square");
+                  document.getElementById('item').style.borderRadius = "0%";
+              } else {
+                  console.log("cube");
+                  document.getElementById('item').style.borderRadius = "50%";
+              }
+              currentTime = new Date().getTime();
+          }, randomWaitAppear);
       }
 
       document.getElementById('item').onclick = function() {
